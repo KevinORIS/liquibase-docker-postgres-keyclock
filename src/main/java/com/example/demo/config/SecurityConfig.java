@@ -15,5 +15,7 @@ public class SecurityConfig {
                         .requestMatchers("/api/products/insert").hasRole("admin")
                         .anyRequest().authenticated())
                 .build();
+//        return httpSecurity.build();
     }
+
 }
