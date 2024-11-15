@@ -1,0 +1,4 @@
+POST http://localhost:8180/realms/test/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+client_id=myclient&client_secret=GY9Io12F9r3fCXRN8qB70KMC0YbERWYX&username=tester&password=password&grant_type=password
