@@ -17,13 +17,13 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
-    @GetMapping("/")
+    @GetMapping("/look")
     public List<Product> getAllProducts(){
        return productService.getProducts();
     }
 
-    @GetMapping("/insert")
-    public Product insert(@RequestBody Product product){
-        return productService.insertProduct(product);
-    }
+//    @GetMapping("/insert")
+//    public Product insert(@RequestBody Product product){
+//        return productService.insertProduct(product);
+//    }
 }
