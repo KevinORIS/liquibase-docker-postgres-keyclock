@@ -16,7 +16,6 @@ public class SecurityConfig {
 
         return httpSecurity
                 .authorizeHttpRequests(c -> c.requestMatchers("/error").permitAll()
-                        .requestMatchers("/api/products/look").hasRole("admin")
                         .anyRequest().authenticated())
                 .build();
 //        return httpSecurity.build();
