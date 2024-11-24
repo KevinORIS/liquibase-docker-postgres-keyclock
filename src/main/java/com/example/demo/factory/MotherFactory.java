@@ -1,6 +1,7 @@
 package com.example.demo.factory;
 
-import com.example.family.entity.Child;
+
+import com.example.demo.entity.Child;
 
 public class MotherFactory implements FamilyFactory {
 
