@@ -1,1 +1,23 @@
 databaseChangeLog:
+  - changeSet:
+      id: create_child_table
+      author: Oris
+      changes:
+        - createTable:
+            tableName: child
+            columns:
+              - column:
+                  name: id
+                  type: INT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: age
+                  type: INT

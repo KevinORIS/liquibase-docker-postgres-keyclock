@@ -1,5 +1,3 @@
-version: "3"
-
 services:
   postgres:
     image: postgres:latest
@@ -10,8 +8,8 @@ services:
     ports:
       - 5432:5432
     networks:
-      - keycloak-network
-  keyckoak:
+      - network
+  keycloak:
     image: bitnami/keycloak:latest
     ports:
       - 8180:8080
@@ -25,14 +23,37 @@ services:
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: 123
     networks:
-      - keycloak-network
+      - network
     depends_on:
       - postgres
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: family
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: apppassword
+    ports:
+      - 3306:3306
+    networks:
+      - network
+
+  spring-app:
+    build: .
+    ports:
+      - 8081:8080
+    networks:
+      - network
+    depends_on:
+      - mysql
+      - keycloak
 
 networks:
-  keycloak-network:
+  network:
     driver: bridge
 
 volumes:
   postgres_data:
+    driver: local
+  mysql_data:
     driver: local
